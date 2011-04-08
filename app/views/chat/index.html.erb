@@ -1,8 +1,20 @@
-<h1>Pusher Example on Rails</h1>
-<% form_tag(:url => { :controller => 'chat', :action => :add_line } ) do -%>
-  Name: <%= text_field_tag( 'name','', { :size => 20, :id => 'name', :class => "input"} ) %>
-  Message: <%= text_field_tag( 'entry','', { :size => 70, :id => 'entry', :class => "input"} ) %>
-  <%= submit_tag "Say Something", :class => "common_button" %>
+<head>
+<style type="text/css" media="screen">
+.column1 {position:absolute; top:100px; left:140px;}
+.column11 {position:absolute; top:80px; left:50px; font-size:20px;}
+.column2 {position:absolute; top:150px; left:140px; font-size:20px;}
+.column22 {position:absolute; top:130px; left:50px; font-size:20px;}
+.column3 {position:absolute; top:200px; left:140px; font-size:20px;}
+
+
+</style>
+
+</head>
+<h1 align="center">Backchannel chat</h1>
+<%= form_tag url_for(:controller => :chat, :action => :message_sent), :remote => true do -%>
+ <p class="column11">Name:</p> <div class="column1"><%= text_field_tag( 'name','', { :size => 15, :id => 'name', :class => "input"} ) %></div>
+ <p class="column22"> Message:</p> <div class="column2"><%= text_field_tag( 'lines','', { :size => 50, :id => 'lines', :class => "input"} ) %></div>
+  <div class="column3"><%= submit_tag "Send", :class => "common_button" %></div>
 <% end -%>
 
 <br />

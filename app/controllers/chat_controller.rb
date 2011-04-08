@@ -1,14 +1,14 @@
 
 class ChatController < ApplicationController
   
-  def add_line
-    @update = {:entry => params[:entry], :name => params[:name]}
+  def message_sent
+    @update = {:lines => params[:lines], :name => params[:name]}
     
-    Pusher['chat'].trigger('add_line', @update)
+    Pusher['chat'].trigger "message_sent", @update
     
     render :update do |page|
-      page[:entry].clear
-      page[:entry].focus
+      page[:lines].clear
+      page[:lines].focus
     end
   end
   
